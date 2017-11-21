@@ -13,12 +13,20 @@ class Frame extends Component {
         fetch(`https://reqres.in/api/users/${id}`)
         .then(
             response => {
-                response.json()
-                .then(
-                    data => {
-                        this.props.onChangeUserAvatar(data.data.avatar);
-                    }
-                )
+                if (response.status == 200) {
+                    response.json()
+                    .then(
+                        data => {
+                            this.props.onChangeUserAvatar(data.data.avatar);
+                        }
+                    )
+                } else {
+                    throw new Error(response.status);
+                }
+            }
+        ).catch(
+            error => {
+                console.log(error);
             }
         );
     }
