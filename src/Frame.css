@@ -1,4 +1,20 @@
 .Frame {
-    background-color: gainsboro;
+    background-color: black;
+    color:white;
+    font-size:16px;    
     padding: 20px;
+    overflow: hidden;
+    margin-left:10%;
+}
+
+.Frame p {
+    font-size:14px;
+    color: peru;
+}
+
+input {
+    padding:10px;
+    font-size:10px;
+    margin-left:10px;
+    outline:none;
 }

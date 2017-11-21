@@ -1,40 +1,33 @@
 import React, { Component } from 'react';
 import Frame from './Frame';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
 
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      heading: ''
-    }    
+      avatar : 'http://placehold.it/128x128',
+      text: ''
+    }
   }
 
-  updateHeading = (val) => {
+  changeUserAvatar = (avatar) => {
+    let text = `{avatar} state change triggered from Child Component: ${avatar}`;
     this.setState({
-      heading: val
+        avatar,
+        text
     });
-    console.log(`From App: ${JSON.stringify(this.state)}`);
-    
   }
-
-  getData(val){
-    console.log(`Reacting from child component ${val}`);
-}
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">{this.state.heading}</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Frame title={this.props.title} sendData={this.getData} heading={this.updateHeading} fresh={this.state.heading}/>
+        <p> Hello from Parent Component </p>
+        <div className="Image">
+          <img src={this.state.avatar}/>
+        </div>
+        <Frame onChangeUserAvatar={this.changeUserAvatar} consoleText={this.state.text} />
       </div>
     );
   }
