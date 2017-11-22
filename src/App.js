@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Frame from './Frame';
 import './App.css';
 
@@ -31,6 +32,10 @@ class App extends Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  name: PropTypes.string.isRequired
 }
 
 export default App;
